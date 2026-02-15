@@ -60,6 +60,10 @@ async def global_exception_handler(request: Request, exc: Exception):
 # Health check
 # --------------------------------------------------------------------------
 
+@app.get("/")
+async def root():
+    return {"message": "AI Receipt Analyzer API", "docs": "/docs", "health": "/api/health"}
+
 @app.get("/api/health")
 async def health():
     return {"status": "ok", "version": "1.0.0"}

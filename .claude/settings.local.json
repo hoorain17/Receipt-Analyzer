@@ -11,7 +11,12 @@
       "Bash(pkill:*)",
       "Bash(xargs kill:*)",
       "Bash(npx tsc:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nFix Vercel deployment: remove pandas, add root route, update vercel.json\n\n- Remove pandas + uvicorn from requirements.txt \\(pandas was unused and\n  ~100MB with numpy, exceeding Vercel''s 50MB serverless limit\\)\n- Add GET / root endpoint to FastAPI so backend URL resolves in browser\n- Bump backend maxDuration to 300s for slow OpenAI API days\n- Add frontend vercel.json with NEXT_PUBLIC_API_URL env reference\n- Add root .gitignore covering .env, node_modules, __pycache__, .next\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git config:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nFix Vercel deployment: remove pandas, add root route, update vercel.json\n\n- Remove pandas + uvicorn from requirements.txt \\(unused, 100MB+ would\n  exceed Vercel serverless 50MB limit causing 404 NOT_FOUND\\)\n- Add GET / root endpoint so backend URL works in browser\n- Bump backend maxDuration to 300s\n- Add frontend vercel.json with env var reference\n- Add root .gitignore\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)"
     ]
   }
 }
